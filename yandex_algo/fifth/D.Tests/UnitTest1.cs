@@ -1,0 +1,29 @@
+using NUnit.Framework;
+
+namespace D.Tests
+{
+    public class Tests
+    {
+        [Test]
+        public void Test1()
+        {
+            var node1 = new Node(1);
+            var node2 = new Node(2);
+            var node3 = new Node(3)
+            {
+                Left = node1,
+                Right = node2
+            };
+
+            var node4 = new Node(1);
+            var node5 = new Node(2);
+            var node6 = new Node(3)
+            {
+                Left = node4,
+                Right = node5
+            };
+
+            Assert.True(Solution.Solve(node3, node6));
+        }
+    }
+}
