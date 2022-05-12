@@ -153,6 +153,8 @@ public class Solution
             };
     }
 
+    // time O(log(min(N,M)))
+    // memory O(N+M)
     public double FindMedianSortedArrays_002(int[] nums1, int[] nums2)
     {
         return nums1.Length <= nums2.Length
