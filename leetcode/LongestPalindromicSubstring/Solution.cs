@@ -79,19 +79,7 @@ public class Solution
                 }
 
                 var length = end - start + 1;
-                if (length == 2)
-                {
-                    dp[end][start] = true;
-                    if (length > maxLength)
-                    {
-                        maxLength = length;
-                        maxStart = start;
-                    }
-
-                    continue;
-                }
-
-                if (dp[end - 1][start + 1])
+                if (length == 2 || dp[end - 1][start + 1])
                 {
                     dp[end][start] = true;
                     if (length > maxLength)
