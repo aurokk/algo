@@ -47,18 +47,12 @@ public class Solution
         // 2 + + +
 
         // aba
-        // start = 0
-        // end = 2
-        // dp[1][1] == true
         //   0 1 2
         // 0 + . .
         // 1 - + .
         // 2 + - +
 
         // abba
-        // start = 0
-        // end = 3
-        // dp[
         //   0 1 2 3
         // 0 + . . .
         // 1 - + . .
