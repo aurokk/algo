@@ -106,4 +106,35 @@ public class Solution
 
         return s.Substring(maxStart, maxLength);
     }
+
+    public string LongestPalindrome_001(string s)
+    {
+        if (s.Length < 2)
+        {
+            return s;
+        }
+
+        var maxStart = 0;
+        var maxLength = 1;
+        for (var i = 0; i < s.Length - 1; i++)
+        for (var j = 0; j < 2; j++)
+        {
+            var left = i;
+            var right = i + j;
+            while (0 <= left && right < s.Length && s[left] == s[right])
+            {
+                var length = right - left + 1;
+                if (length > maxLength)
+                {
+                    maxStart = left;
+                    maxLength = length;
+                }
+
+                left--;
+                right++;
+            }
+        }
+
+        return s.Substring(maxStart, maxLength);
+    }
 }
