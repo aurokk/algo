@@ -52,6 +52,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumNumberOfIncrementsOn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumNumberOfIncrementsOnSubarraysToFormATargetArray", "MinimumNumberOfIncrementsOnSubarraysToFormATargetArray\MinimumNumberOfIncrementsOnSubarraysToFormATargetArray.csproj", "{D5459660-4694-4788-B7D9-2CEC96E91443}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAllAnagramsInAString", "FindAllAnagramsInAString\FindAllAnagramsInAString.csproj", "{24D9DEDD-4298-4ACB-84D7-A360FB80CBE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAllAnagramsInAString.Tests", "FindAllAnagramsInAString.Tests\FindAllAnagramsInAString.Tests.csproj", "{72826E31-A951-44FA-B36D-5B1722CE4CF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -162,5 +166,13 @@ Global
 		{D5459660-4694-4788-B7D9-2CEC96E91443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5459660-4694-4788-B7D9-2CEC96E91443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5459660-4694-4788-B7D9-2CEC96E91443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D9DEDD-4298-4ACB-84D7-A360FB80CBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D9DEDD-4298-4ACB-84D7-A360FB80CBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D9DEDD-4298-4ACB-84D7-A360FB80CBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D9DEDD-4298-4ACB-84D7-A360FB80CBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72826E31-A951-44FA-B36D-5B1722CE4CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72826E31-A951-44FA-B36D-5B1722CE4CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72826E31-A951-44FA-B36D-5B1722CE4CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72826E31-A951-44FA-B36D-5B1722CE4CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
