@@ -60,6 +60,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIfNumberIsASumOfPowers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIfNumberIsASumOfPowersOfThree.Tests", "CheckIfNumberIsASumOfPowersOfThree.Tests\CheckIfNumberIsASumOfPowersOfThree.Tests.csproj", "{554FDDBA-EBD3-48B0-957A-8DFF49F4A7DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountArrayPairsDivisibleByK", "CountArrayPairsDivisibleByK\CountArrayPairsDivisibleByK.csproj", "{E129618F-F81C-41C1-A4CE-4DA5A1AD7953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountArrayPairsDivisibleByK.Tests", "CountArrayPairsDivisibleByK.Tests\CountArrayPairsDivisibleByK.Tests.csproj", "{ACFA49D4-7834-4485-9457-45966F70353C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountEqualAndDivisiblePairsInAnArray", "CountEqualAndDivisiblePairsInAnArray\CountEqualAndDivisiblePairsInAnArray.csproj", "{C280CBD4-4A57-449E-8BFA-0EA60BD836BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountEqualAndDivisiblePairsInAnArray.Tests", "CountEqualAndDivisiblePairsInAnArray.Tests\CountEqualAndDivisiblePairsInAnArray.Tests.csproj", "{EE7D3A36-86D1-42BF-AE1F-6457A4C5AF3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIfArrayPairsAreDivisibleByK", "CheckIfArrayPairsAreDivisibleByK\CheckIfArrayPairsAreDivisibleByK.csproj", "{8D918C78-B32C-41BE-B238-CED5B55CB1B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIfArrayPairsAreDivisibleByK.Tests", "CheckIfArrayPairsAreDivisibleByK.Tests\CheckIfArrayPairsAreDivisibleByK.Tests.csproj", "{08851A62-D3CF-469E-9D2D-DB00169B97BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,5 +198,29 @@ Global
 		{554FDDBA-EBD3-48B0-957A-8DFF49F4A7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554FDDBA-EBD3-48B0-957A-8DFF49F4A7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{554FDDBA-EBD3-48B0-957A-8DFF49F4A7DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E129618F-F81C-41C1-A4CE-4DA5A1AD7953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E129618F-F81C-41C1-A4CE-4DA5A1AD7953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E129618F-F81C-41C1-A4CE-4DA5A1AD7953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E129618F-F81C-41C1-A4CE-4DA5A1AD7953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFA49D4-7834-4485-9457-45966F70353C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFA49D4-7834-4485-9457-45966F70353C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFA49D4-7834-4485-9457-45966F70353C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFA49D4-7834-4485-9457-45966F70353C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C280CBD4-4A57-449E-8BFA-0EA60BD836BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C280CBD4-4A57-449E-8BFA-0EA60BD836BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C280CBD4-4A57-449E-8BFA-0EA60BD836BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C280CBD4-4A57-449E-8BFA-0EA60BD836BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE7D3A36-86D1-42BF-AE1F-6457A4C5AF3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7D3A36-86D1-42BF-AE1F-6457A4C5AF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7D3A36-86D1-42BF-AE1F-6457A4C5AF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7D3A36-86D1-42BF-AE1F-6457A4C5AF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D918C78-B32C-41BE-B238-CED5B55CB1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D918C78-B32C-41BE-B238-CED5B55CB1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D918C78-B32C-41BE-B238-CED5B55CB1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D918C78-B32C-41BE-B238-CED5B55CB1B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08851A62-D3CF-469E-9D2D-DB00169B97BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08851A62-D3CF-469E-9D2D-DB00169B97BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08851A62-D3CF-469E-9D2D-DB00169B97BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08851A62-D3CF-469E-9D2D-DB00169B97BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
