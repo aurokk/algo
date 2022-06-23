@@ -16,6 +16,13 @@ public class Tests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
+    [TestCase(new[] { 3, 1, 2, 2, 2, 1, 3 }, 2, 4)]
+    public void Test_002(int[] input, int k, int expected)
+    {
+        var actual = new Solution().CountPairs_002(input, k);
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
     [TestCase(0, 1, 1)] // 000 001 => 001
     [TestCase(0, 2, 2)] // 000 010 => 010
     [TestCase(1, 2, 3)] // 001 010 => 011

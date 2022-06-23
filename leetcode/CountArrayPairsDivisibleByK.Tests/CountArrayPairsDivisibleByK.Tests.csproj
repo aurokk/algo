@@ -20,4 +20,9 @@
       <ProjectReference Include="..\CountArrayPairsDivisibleByK\CountArrayPairsDivisibleByK.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="input_000.json" />
+      <EmbeddedResource Include="input_000.json" />
+    </ItemGroup>
+
 </Project>

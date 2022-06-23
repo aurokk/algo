@@ -62,6 +62,49 @@ public class Solution
         return res;
     }
 
+    // O(n*sqrt(n))
+    public int CountPairs_002(int[] nums, int k)
+    {
+        var res = 0;
+
+        var freq = new Dictionary<int, List<int>>();
+        for (var i = 0; i < nums.Length; i++)
+        {
+            var n = nums[i];
+            if (!freq.ContainsKey(n))
+            {
+                freq[n] = new List<int>();
+            }
+
+            freq[n].Add(i);
+        }
+
+        var gcds = new Dictionary<int, int>();
+        foreach (var (_, ids) in freq)
+        {
+            gcds.Clear();
+
+            foreach (var id in ids)
+            {
+                var gcdA = GCD(id, k);
+
+                foreach (var (gcdB, gcdBCount) in gcds)
+                {
+                    res += gcdA * gcdB % k == 0 ? gcdBCount : 0;
+                }
+
+                if (!gcds.ContainsKey(gcdA))
+                {
+                    gcds[gcdA] = 0;
+                }
+
+                gcds[gcdA]++;
+            }
+        }
+
+        return res;
+    }
+
     public static int GCD(int a, int b)
     {
         while (a != 0 && b != 0)
