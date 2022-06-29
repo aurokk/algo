@@ -88,6 +88,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycleII", "Linked
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycleII.Tests", "LinkedListCycleII.Tests\LinkedListCycleII.Tests.csproj", "{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionAddOperators", "ExpressionAddOperators\ExpressionAddOperators.csproj", "{949AE15A-F8B5-4DC0-B2FB-0DBC37BD069D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionAddOperators.Tests", "ExpressionAddOperators.Tests\ExpressionAddOperators.Tests.csproj", "{617C0787-936F-40BB-B562-6A434A305F42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -270,5 +274,13 @@ Global
 		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949AE15A-F8B5-4DC0-B2FB-0DBC37BD069D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949AE15A-F8B5-4DC0-B2FB-0DBC37BD069D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949AE15A-F8B5-4DC0-B2FB-0DBC37BD069D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949AE15A-F8B5-4DC0-B2FB-0DBC37BD069D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617C0787-936F-40BB-B562-6A434A305F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617C0787-936F-40BB-B562-6A434A305F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617C0787-936F-40BB-B562-6A434A305F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617C0787-936F-40BB-B562-6A434A305F42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
