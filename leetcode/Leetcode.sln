@@ -80,6 +80,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeLinkedList", "Pal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromeLinkedList.Tests", "PalindromeLinkedList.Tests\PalindromeLinkedList.Tests.csproj", "{344FA90F-6D3F-410A-BEE0-6AD2F1D71F1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycle", "LinkedListCycle\LinkedListCycle.csproj", "{0995EB82-ECFF-4466-961A-7057474C5A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycle.Tests", "LinkedListCycle.Tests\LinkedListCycle.Tests.csproj", "{0F63839B-2805-4520-8C5E-60AA7960699C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycleII", "LinkedListCycleII\LinkedListCycleII.csproj", "{4EDD3F93-EF18-43A0-BB16-8848BE519574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCycleII.Tests", "LinkedListCycleII.Tests\LinkedListCycleII.Tests.csproj", "{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -246,5 +254,21 @@ Global
 		{344FA90F-6D3F-410A-BEE0-6AD2F1D71F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344FA90F-6D3F-410A-BEE0-6AD2F1D71F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344FA90F-6D3F-410A-BEE0-6AD2F1D71F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0995EB82-ECFF-4466-961A-7057474C5A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0995EB82-ECFF-4466-961A-7057474C5A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0995EB82-ECFF-4466-961A-7057474C5A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0995EB82-ECFF-4466-961A-7057474C5A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F63839B-2805-4520-8C5E-60AA7960699C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F63839B-2805-4520-8C5E-60AA7960699C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F63839B-2805-4520-8C5E-60AA7960699C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F63839B-2805-4520-8C5E-60AA7960699C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDD3F93-EF18-43A0-BB16-8848BE519574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDD3F93-EF18-43A0-BB16-8848BE519574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDD3F93-EF18-43A0-BB16-8848BE519574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDD3F93-EF18-43A0-BB16-8848BE519574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB2C49C-C199-4DC6-A91D-303BA3C47B99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
