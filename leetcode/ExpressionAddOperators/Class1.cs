@@ -120,7 +120,8 @@ public class Solution
         return results;
     }
 
-    private void AddOperatorsInternal_002(List<string> acc, string num, int position, int target, string path, long sum, long prev)
+    private void AddOperatorsInternal_002(List<string> acc, string num, int position, int target, string path, long sum,
+        long prev)
     {
         if (position == num.Length)
         {
@@ -152,7 +153,59 @@ public class Solution
             {
                 AddOperatorsInternal_002(acc, num, i + 1, target, path + "+" + ss, sum + sn, sn);
                 AddOperatorsInternal_002(acc, num, i + 1, target, path + "-" + ss, sum - sn, -sn);
-                AddOperatorsInternal_002(acc, num, i + 1, target, path + "*" + ss, (sum - prev) + (prev * sn), prev * sn);
+                AddOperatorsInternal_002(acc, num, i + 1, target, path + "*" + ss, (sum - prev) + (prev * sn),
+                    prev * sn);
+            }
+        }
+    }
+
+    public IList<string> AddOperators_003(string num, int target)
+    {
+        var results = new List<string>();
+        AddOperatorsInternal_003(results, num, 0, target, "", 0, 0);
+        return results;
+    }
+
+    public static void AddOperatorsInternal_003(
+        List<string> acc,
+        string num,
+        int pos,
+        int target,
+        string path,
+        long sum,
+        long prev)
+    {
+        if (pos == num.Length)
+        {
+            if (sum == target)
+            {
+                acc.Add(path);
+            }
+
+            return;
+        }
+
+        var ss = string.Empty;
+        long sn = 0;
+        for (var i = pos; i < num.Length; i++)
+        {
+            ss += num[i];
+            sn = sn * 10 + (num[i] - '0');
+
+            if (ss.Length > 1 && ss[0] == '0')
+            {
+                break;
+            }
+
+            if (pos == 0)
+            {
+                AddOperatorsInternal_003(acc, num, i + 1, target, ss, sn, sn);
+            }
+            else
+            {
+                AddOperatorsInternal_003(acc, num, i + 1, target, path + "+" + sn, sum + sn, sn);
+                AddOperatorsInternal_003(acc, num, i + 1, target, path + "-" + sn, sum - sn, -sn);
+                AddOperatorsInternal_003(acc, num, i + 1, target, path + "*" + sn, sum - prev + prev * sn, prev * sn);
             }
         }
     }
