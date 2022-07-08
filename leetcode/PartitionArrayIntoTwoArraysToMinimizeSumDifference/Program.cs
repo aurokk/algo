@@ -33,6 +33,7 @@ public class Solution
             var k = targetCount - n;
             var sums2L = sums2[k];
 
+            // Вообще, если тут использовать что-то вроде бинарного поиска — должно стать побыстрее
             var l = 0;
             var r = sums2L.Count - 1;
             while (l < sums1L.Count && r >= 0)
