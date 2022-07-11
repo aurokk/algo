@@ -104,6 +104,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestStringChain", "Longe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestStringChain.Tests", "LongestStringChain.Tests\LongestStringChain.Tests.csproj", "{F300A94B-3A16-4336-8D65-73861A9FE124}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddBinary", "AddBinary\AddBinary.csproj", "{59BD22F9-4093-497D-B63A-1A3AFBB03B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddBinary.Tests", "AddBinary.Tests\AddBinary.Tests.csproj", "{CB80AF48-76BD-4AC3-9BEB-6F2BE31E53F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -318,5 +322,13 @@ Global
 		{F300A94B-3A16-4336-8D65-73861A9FE124}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F300A94B-3A16-4336-8D65-73861A9FE124}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F300A94B-3A16-4336-8D65-73861A9FE124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BD22F9-4093-497D-B63A-1A3AFBB03B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BD22F9-4093-497D-B63A-1A3AFBB03B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BD22F9-4093-497D-B63A-1A3AFBB03B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BD22F9-4093-497D-B63A-1A3AFBB03B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB80AF48-76BD-4AC3-9BEB-6F2BE31E53F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB80AF48-76BD-4AC3-9BEB-6F2BE31E53F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB80AF48-76BD-4AC3-9BEB-6F2BE31E53F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB80AF48-76BD-4AC3-9BEB-6F2BE31E53F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
