@@ -48,17 +48,22 @@ public class Solution
         }
 
         var ps = $"{needle}#{haystack}";
-        for (int i = 1, j = 0; i < ps.Length; i++)
+        var p = new int[ps.Length];
+        for (var i = 1; i < ps.Length; i++)
         {
+            var j = p[i - 1];
+
             while (ps[i] != ps[j] && j > 0)
             {
-                j--;
+                j = p[j - 1];
             }
 
             if (ps[i] == ps[j])
             {
                 j++;
             }
+
+            p[i] = j;
 
             if (j == needle.Length)
             {
