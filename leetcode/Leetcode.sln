@@ -120,6 +120,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTheLock", "OpenTheLock\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTheLock.Tests", "OpenTheLock.Tests\OpenTheLock.Tests.csproj", "{5D9CD5A7-D84E-4A04-B10C-32CFFD15ADC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodFill", "FloodFill\FloodFill.csproj", "{1848D1E5-3881-4A01-8ADF-A45F2A5E73D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodFill.Tests", "FloodFill.Tests\FloodFill.Tests.csproj", "{EFAEBFC2-3627-4EF8-B5FD-3044E706D8BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -366,5 +370,13 @@ Global
 		{5D9CD5A7-D84E-4A04-B10C-32CFFD15ADC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D9CD5A7-D84E-4A04-B10C-32CFFD15ADC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D9CD5A7-D84E-4A04-B10C-32CFFD15ADC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1848D1E5-3881-4A01-8ADF-A45F2A5E73D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1848D1E5-3881-4A01-8ADF-A45F2A5E73D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1848D1E5-3881-4A01-8ADF-A45F2A5E73D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1848D1E5-3881-4A01-8ADF-A45F2A5E73D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFAEBFC2-3627-4EF8-B5FD-3044E706D8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFAEBFC2-3627-4EF8-B5FD-3044E706D8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFAEBFC2-3627-4EF8-B5FD-3044E706D8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFAEBFC2-3627-4EF8-B5FD-3044E706D8BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
