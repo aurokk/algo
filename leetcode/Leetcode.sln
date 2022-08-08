@@ -126,6 +126,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodFill.Tests", "FloodFil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxSquare.Tests", "MaxSquare.Tests\MaxSquare.Tests.csproj", "{BE808170-6B01-4573-8F7F-26C52D22176E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumDifficultyOfAJobSchedule.Tests", "MinimumDifficultyOfAJobSchedule.Tests\MinimumDifficultyOfAJobSchedule.Tests.csproj", "{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -384,5 +386,9 @@ Global
 		{BE808170-6B01-4573-8F7F-26C52D22176E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE808170-6B01-4573-8F7F-26C52D22176E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE808170-6B01-4573-8F7F-26C52D22176E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
