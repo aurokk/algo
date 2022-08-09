@@ -128,6 +128,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxSquare.Tests", "MaxSquar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumDifficultyOfAJobSchedule.Tests", "MinimumDifficultyOfAJobSchedule.Tests\MinimumDifficultyOfAJobSchedule.Tests.csproj", "{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinChange.Tests", "CoinChange.Tests\CoinChange.Tests.csproj", "{55127C67-ADB2-436F-B7D0-9903AB5B2557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -390,5 +392,9 @@ Global
 		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0DECAF9-03EA-4981-A09E-B69F9FE16E6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
