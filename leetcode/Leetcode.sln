@@ -130,6 +130,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimumDifficultyOfAJobSche
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinChange.Tests", "CoinChange.Tests\CoinChange.Tests.csproj", "{55127C67-ADB2-436F-B7D0-9903AB5B2557}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberOfDiceRollsWithTargetSum.Tests", "NumberOfDiceRollsWithTargetSum.Tests\NumberOfDiceRollsWithTargetSum.Tests.csproj", "{948E9895-A803-45BF-9624-5FE0D24D1125}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsInterleave.Tests", "IsInterleave.Tests\IsInterleave.Tests.csproj", "{4FAC50AC-4480-4FEB-B6AC-EF350B2C7ACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LRUCache.Tests", "LRUCache.Tests\LRUCache.Tests.csproj", "{FDBC7F67-5437-430B-A23F-8C1B65C27414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearch.Tests", "BinarySearch.Tests\BinarySearch.Tests.csproj", "{24DD2875-FD2C-43F0-B480-2722BE221ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -396,5 +404,21 @@ Global
 		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55127C67-ADB2-436F-B7D0-9903AB5B2557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948E9895-A803-45BF-9624-5FE0D24D1125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948E9895-A803-45BF-9624-5FE0D24D1125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948E9895-A803-45BF-9624-5FE0D24D1125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948E9895-A803-45BF-9624-5FE0D24D1125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FAC50AC-4480-4FEB-B6AC-EF350B2C7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FAC50AC-4480-4FEB-B6AC-EF350B2C7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FAC50AC-4480-4FEB-B6AC-EF350B2C7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FAC50AC-4480-4FEB-B6AC-EF350B2C7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDBC7F67-5437-430B-A23F-8C1B65C27414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDBC7F67-5437-430B-A23F-8C1B65C27414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDBC7F67-5437-430B-A23F-8C1B65C27414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDBC7F67-5437-430B-A23F-8C1B65C27414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24DD2875-FD2C-43F0-B480-2722BE221ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24DD2875-FD2C-43F0-B480-2722BE221ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24DD2875-FD2C-43F0-B480-2722BE221ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24DD2875-FD2C-43F0-B480-2722BE221ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
