@@ -142,6 +142,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateMaximumNumber.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddEvenJump.Tests", "OddEvenJump.Tests\OddEvenJump.Tests.csproj", "{BC88EBE0-CB27-4F87-AD86-82A51CC4AC2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountNumberOfTeams.Tests", "CountNumberOfTeams.Tests\CountNumberOfTeams.Tests.csproj", "{2B8D33C3-24DE-4AA9-97C6-193E9C7CCD98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillingBookcaseShelves", "FillingBookcaseShelves\FillingBookcaseShelves.csproj", "{7F96A3E7-B3C6-4D08-B8AB-FEA0E580852C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralMatrix3.Tests", "SpiralMatrix3.Tests\SpiralMatrix3.Tests.csproj", "{C36B21EB-8689-43B5-836D-5EB2FA6C3438}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -432,5 +438,17 @@ Global
 		{BC88EBE0-CB27-4F87-AD86-82A51CC4AC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC88EBE0-CB27-4F87-AD86-82A51CC4AC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC88EBE0-CB27-4F87-AD86-82A51CC4AC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8D33C3-24DE-4AA9-97C6-193E9C7CCD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8D33C3-24DE-4AA9-97C6-193E9C7CCD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8D33C3-24DE-4AA9-97C6-193E9C7CCD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8D33C3-24DE-4AA9-97C6-193E9C7CCD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F96A3E7-B3C6-4D08-B8AB-FEA0E580852C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F96A3E7-B3C6-4D08-B8AB-FEA0E580852C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F96A3E7-B3C6-4D08-B8AB-FEA0E580852C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F96A3E7-B3C6-4D08-B8AB-FEA0E580852C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C36B21EB-8689-43B5-836D-5EB2FA6C3438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36B21EB-8689-43B5-836D-5EB2FA6C3438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36B21EB-8689-43B5-836D-5EB2FA6C3438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36B21EB-8689-43B5-836D-5EB2FA6C3438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
