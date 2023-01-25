@@ -150,6 +150,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiralMatrix3.Tests", "Spir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearestExitFromEntranceInMaze", "NearestExitFromEntranceInMaze\NearestExitFromEntranceInMaze.csproj", "{7245425B-0CE9-4DA3-9A78-E7F66B873ED9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindClosestNodeToGivenTwoNodes", "FindClosestNodeToGivenTwoNodes\FindClosestNodeToGivenTwoNodes.csproj", "{A98D5A20-00AE-42D8-9D49-169E76A7959A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -456,5 +458,9 @@ Global
 		{7245425B-0CE9-4DA3-9A78-E7F66B873ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7245425B-0CE9-4DA3-9A78-E7F66B873ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7245425B-0CE9-4DA3-9A78-E7F66B873ED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98D5A20-00AE-42D8-9D49-169E76A7959A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98D5A20-00AE-42D8-9D49-169E76A7959A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98D5A20-00AE-42D8-9D49-169E76A7959A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98D5A20-00AE-42D8-9D49-169E76A7959A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
