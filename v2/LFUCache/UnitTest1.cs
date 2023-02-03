@@ -74,7 +74,25 @@ public class Cache
                     _freq.Remove(oldCount);
                 }
 
-                _freq[newCount] = f;
+                // put
+                if (_freq.ContainsKey(newCount))
+                {
+                    var pf = _freq[newCount];
+                    if (_freq.ContainsKey(oldCount))
+                    {
+                        _freq[oldCount].Next = f.Next;
+                    }
+
+                    f.Next = pf.Next;
+                    f.Prev = pf;
+                    pf.Next = f;
+                    _freq[newCount] = f;
+                }
+                else
+                {
+                    _freq[newCount] = f;
+                }
+
                 return;
             }
             else
@@ -267,14 +285,14 @@ public class Tests
     public void Test_016()
     {
         var sut = new Cache(2);
-        // sut.Put(1, 1);
-        // sut.Put(2, 2);
-        // sut.Put(2, 3);
-        // sut.Put(1, 4);
-        // Assert.That(sut.Freq.ContainsKey(1), Is.False);
-        // Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
-        // Assert.That(sut.Freq[2].Next, Is.Null);
-        // Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Data[2].Frequency));
-        // Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(2, 3);
+        sut.Put(1, 4);
+        Assert.That(sut.Freq.ContainsKey(1), Is.False);
+        Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
+        Assert.That(sut.Freq[2].Next, Is.Null);
+        Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Data[2].Frequency));
     }
 }
