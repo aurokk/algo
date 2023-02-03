@@ -3,6 +3,7 @@ namespace LFUCache;
 // start: 18:10
 // break: 19:40
 // start: 19:50
+// break: 20:10
 
 public class DataNode
 {
@@ -143,6 +144,11 @@ public class Cache
             var d = _data[key];
             d.Value = value;
             UpdateCounts(key);
+            return;
+        }
+
+        if (Size == _capacity)
+        {
             return;
         }
 
@@ -421,5 +427,15 @@ public class Tests
         Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
         Assert.That(sut.Freq[2].Next, Is.Null);
         Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Freq[1]));
+    }
+
+    [Test]
+    public void Test_021()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        Assert.That(sut.Size, Is.EqualTo(2));
     }
 }
