@@ -83,10 +83,6 @@ public class Cache
                 if (_freq.ContainsKey(newCount))
                 {
                     var pf = _freq[newCount];
-                    if (_freq.ContainsKey(oldCount))
-                    {
-                        _freq[oldCount].Next = f.Next;
-                    }
 
                     if (p != null)
                     {
