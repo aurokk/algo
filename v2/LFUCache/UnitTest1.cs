@@ -56,26 +56,28 @@ public class Cache
         {
             var d = _data[key];
             var f = d.Frequency;
+            var oldCount = f.Count;
+            var newCount = f.Count + 1;
             d.Value = value;
-            if (_freq[f.Count] == f)
+            if (_freq[oldCount] == f)
             {
                 if (f.Prev != null)
                 {
-                    _freq[f.Count] = f.Prev;
+                    _freq[oldCount] = f.Prev;
                 }
                 else
                 {
-                    _freq.Remove(f.Count);
+                    _freq.Remove(oldCount);
                 }
 
-                f.Count++;
-                _freq[f.Count] = f;
+                f.Count = newCount;
+                _freq[newCount] = f;
                 return;
             }
             else
             {
-                f.Count++;
-                _freq[f.Count] = f;
+                f.Count = newCount;
+                _freq[newCount] = f;
             }
 
             return;
