@@ -42,14 +42,98 @@ public class Cache
         if (_data.ContainsKey(key))
         {
             var d = _data[key];
-            var f = d.Frequency;
-            _freq.Remove(f.Count);
-            f.Count++;
-            _freq[f.Count] = f;
+            UpdateCounts(key);
             return d.Value;
         }
 
         return -1;
+    }
+
+    private void UpdateCounts(int key)
+    {
+        var d = _data[key];
+        var f = d.Frequency;
+        var oldCount = f.Count;
+        var newCount = f.Count + 1;
+        f.Count = newCount;
+
+        if (_freq[oldCount] == f)
+        {
+            // extract
+            var p = f.Prev;
+            var n = f.Next;
+
+            if (p != null && p.Count == oldCount)
+            {
+                _freq[oldCount] = p;
+            }
+            else
+            {
+                _freq.Remove(oldCount);
+            }
+
+            // put
+            if (_freq.ContainsKey(newCount))
+            {
+                var pf = _freq[newCount];
+
+                if (p != null)
+                {
+                    p.Next = n;
+                }
+
+                if (n != null)
+                {
+                    n.Prev = p;
+                }
+
+                f.Next = pf.Next;
+                f.Prev = pf;
+                pf.Next = f;
+                _freq[newCount] = f;
+            }
+            else
+            {
+                _freq[newCount] = f;
+            }
+
+            return;
+        }
+        else
+        {
+            // extract
+            var n = f.Next;
+            var p = f.Prev;
+            if (n != null)
+            {
+                n.Prev = p;
+            }
+
+            if (p != null)
+            {
+                p.Next = n;
+            }
+
+            // insert
+            if (_freq.ContainsKey(newCount))
+            {
+                var x = _freq[newCount];
+                f.Next = x.Next;
+                f.Prev = x;
+                x.Next = f;
+                _freq[newCount] = f;
+            }
+            else
+            {
+                var x = _freq[oldCount];
+                f.Next = x.Next;
+                f.Prev = x;
+                x.Next = f;
+                _freq[newCount] = f;
+            }
+
+            return;
+        }
     }
 
     public void Put(int key, int value)
@@ -58,89 +142,8 @@ public class Cache
         {
             var d = _data[key];
             d.Value = value;
-
-            var f = d.Frequency;
-            var oldCount = f.Count;
-            var newCount = f.Count + 1;
-            f.Count = newCount;
-
-            if (_freq[oldCount] == f)
-            {
-                // extract
-                var p = f.Prev;
-                var n = f.Next;
-
-                if (p != null && p.Count == oldCount)
-                {
-                    _freq[oldCount] = p;
-                }
-                else
-                {
-                    _freq.Remove(oldCount);
-                }
-
-                // put
-                if (_freq.ContainsKey(newCount))
-                {
-                    var pf = _freq[newCount];
-
-                    if (p != null)
-                    {
-                        p.Next = n;
-                    }
-
-                    if (n != null)
-                    {
-                        n.Prev = p;
-                    }
-
-                    f.Next = pf.Next;
-                    f.Prev = pf;
-                    pf.Next = f;
-                    _freq[newCount] = f;
-                }
-                else
-                {
-                    _freq[newCount] = f;
-                }
-
-                return;
-            }
-            else
-            {
-                // extract
-                var n = f.Next;
-                var p = f.Prev;
-                if (n != null)
-                {
-                    n.Prev = p;
-                }
-
-                if (p != null)
-                {
-                    p.Next = n;
-                }
-
-                // insert
-                if (_freq.ContainsKey(newCount))
-                {
-                    var x = _freq[newCount];
-                    f.Next = x.Next;
-                    f.Prev = x;
-                    x.Next = f;
-                    _freq[newCount] = f;
-                }
-                else
-                {
-                    var x = _freq[oldCount];
-                    f.Next = x.Next;
-                    f.Prev = x;
-                    x.Next = f;
-                    _freq[newCount] = f;
-                }
-
-                return;
-            }
+            UpdateCounts(key);
+            return;
         }
 
         {
@@ -378,5 +381,45 @@ public class Tests
         Assert.That(sut.Freq[4], Is.EqualTo(sut.Data[2].Frequency));
         Assert.That(sut.Freq[4].Next, Is.Null);
         Assert.That(sut.Freq[4].Prev, Is.EqualTo(sut.Freq[2]));
+    }
+
+    [Test]
+    public void Test_019()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(2, 3);
+        sut.Put(1, 4);
+        sut.Put(2, 5);
+        sut.Put(2, 6);
+        sut.Get(2);
+        Assert.That(sut.Freq.ContainsKey(1), Is.False);
+        Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
+        Assert.That(sut.Freq[2].Next, Is.EqualTo(sut.Freq[5]));
+        Assert.That(sut.Freq[2].Prev, Is.Null);
+        Assert.That(sut.Freq.ContainsKey(4), Is.False);
+        Assert.That(sut.Freq.ContainsKey(5), Is.True);
+        Assert.That(sut.Freq[5], Is.EqualTo(sut.Data[2].Frequency));
+        Assert.That(sut.Freq[5].Next, Is.Null);
+        Assert.That(sut.Freq[5].Prev, Is.EqualTo(sut.Freq[2]));
+    }
+
+    [Test]
+    public void Test_020()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Get(1);
+        Assert.That(sut.Freq.ContainsKey(1), Is.True);
+        Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        Assert.That(sut.Freq[1], Is.EqualTo(sut.Data[2].Frequency));
+        Assert.That(sut.Freq[1].Next, Is.EqualTo(sut.Freq[2]));
+        Assert.That(sut.Freq[1].Prev, Is.Null);
+        Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
+        Assert.That(sut.Freq[2].Next, Is.Null);
+        Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Freq[1]));
     }
 }
