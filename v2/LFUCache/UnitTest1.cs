@@ -55,12 +55,15 @@ public class Cache
         if (_data.ContainsKey(key))
         {
             var d = _data[key];
+            d.Value = value;
+
             var f = d.Frequency;
             var oldCount = f.Count;
             var newCount = f.Count + 1;
-            d.Value = value;
+
             if (_freq[oldCount] == f)
             {
+                // extract
                 if (f.Prev != null)
                 {
                     _freq[oldCount] = f.Prev;
@@ -78,9 +81,8 @@ public class Cache
             {
                 f.Count = newCount;
                 _freq[newCount] = f;
+                return;
             }
-
-            return;
         }
 
         {
