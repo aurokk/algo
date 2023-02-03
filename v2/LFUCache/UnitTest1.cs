@@ -88,6 +88,7 @@ public class Cache
                     {
                         p.Next = n;
                     }
+
                     if (n != null)
                     {
                         n.Prev = p;
@@ -351,5 +352,31 @@ public class Tests
         Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
         Assert.That(sut.Freq[2].Next, Is.EqualTo(sut.Freq[3]));
         Assert.That(sut.Freq[2].Prev, Is.Null);
+        Assert.That(sut.Freq.ContainsKey(3), Is.True);
+        Assert.That(sut.Freq[3], Is.EqualTo(sut.Data[2].Frequency));
+        Assert.That(sut.Freq[3].Next, Is.Null);
+        Assert.That(sut.Freq[3].Prev, Is.EqualTo(sut.Freq[2]));
+    }
+
+    [Test]
+    public void Test_018()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(2, 3);
+        sut.Put(1, 4);
+        sut.Put(2, 5);
+        sut.Put(2, 6);
+        Assert.That(sut.Freq.ContainsKey(1), Is.False);
+        Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
+        Assert.That(sut.Freq[2].Next, Is.EqualTo(sut.Freq[4]));
+        Assert.That(sut.Freq[2].Prev, Is.Null);
+        Assert.That(sut.Freq.ContainsKey(3), Is.False);
+        Assert.That(sut.Freq.ContainsKey(4), Is.True);
+        Assert.That(sut.Freq[4], Is.EqualTo(sut.Data[2].Frequency));
+        Assert.That(sut.Freq[4].Next, Is.Null);
+        Assert.That(sut.Freq[4].Prev, Is.EqualTo(sut.Freq[2]));
     }
 }
