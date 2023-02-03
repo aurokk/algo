@@ -60,6 +60,7 @@ public class Cache
             var f = d.Frequency;
             var oldCount = f.Count;
             var newCount = f.Count + 1;
+            f.Count = newCount;
 
             if (_freq[oldCount] == f)
             {
@@ -73,13 +74,11 @@ public class Cache
                     _freq.Remove(oldCount);
                 }
 
-                f.Count = newCount;
                 _freq[newCount] = f;
                 return;
             }
             else
             {
-                f.Count = newCount;
                 _freq[newCount] = f;
                 return;
             }
