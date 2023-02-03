@@ -1,6 +1,8 @@
 namespace LFUCache;
 
 // start: 18:10
+// break: 19:40
+// start: 19:50
 
 public class DataNode
 {
@@ -65,9 +67,12 @@ public class Cache
             if (_freq[oldCount] == f)
             {
                 // extract
-                if (f.Prev != null)
+                var p = f.Prev;
+                var n = f.Next;
+
+                if (p != null && p.Count == oldCount)
                 {
-                    _freq[oldCount] = f.Prev;
+                    _freq[oldCount] = p;
                 }
                 else
                 {
@@ -81,6 +86,15 @@ public class Cache
                     if (_freq.ContainsKey(oldCount))
                     {
                         _freq[oldCount].Next = f.Next;
+                    }
+
+                    if (p != null)
+                    {
+                        p.Next = n;
+                    }
+                    if (n != null)
+                    {
+                        n.Prev = p;
                     }
 
                     f.Next = pf.Next;
@@ -97,7 +111,37 @@ public class Cache
             }
             else
             {
-                _freq[newCount] = f;
+                // extract
+                var n = f.Next;
+                var p = f.Prev;
+                if (n != null)
+                {
+                    n.Prev = p;
+                }
+
+                if (p != null)
+                {
+                    p.Next = n;
+                }
+
+                // insert
+                if (_freq.ContainsKey(newCount))
+                {
+                    var x = _freq[newCount];
+                    f.Next = x.Next;
+                    f.Prev = x;
+                    x.Next = f;
+                    _freq[newCount] = f;
+                }
+                else
+                {
+                    var x = _freq[oldCount];
+                    f.Next = x.Next;
+                    f.Prev = x;
+                    x.Next = f;
+                    _freq[newCount] = f;
+                }
+
                 return;
             }
         }
@@ -294,5 +338,22 @@ public class Tests
         Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
         Assert.That(sut.Freq[2].Next, Is.Null);
         Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Data[2].Frequency));
+        Assert.That(sut.Data[2].Frequency.Prev, Is.Null);
+    }
+
+    [Test]
+    public void Test_017()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(2, 3);
+        sut.Put(1, 4);
+        sut.Put(2, 5);
+        Assert.That(sut.Freq.ContainsKey(1), Is.False);
+        Assert.That(sut.Freq.ContainsKey(2), Is.True);
+        Assert.That(sut.Freq[2], Is.EqualTo(sut.Data[1].Frequency));
+        Assert.That(sut.Freq[2].Next, Is.EqualTo(sut.Freq[3]));
+        Assert.That(sut.Freq[2].Prev, Is.Null);
     }
 }
