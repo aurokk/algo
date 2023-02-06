@@ -221,9 +221,9 @@ public class Cache
             {
                 _freq[f.Count] = f;
                 f.Next = Head;
-                if (Head != null)
+                if (f.Next != null)
                 {
-                    Head.Prev = f;
+                    f.Next.Prev = f;
                 }
 
                 Head = f;
