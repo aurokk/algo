@@ -149,6 +149,11 @@ public class Cache
 
     public void Put(int key, int value)
     {
+        if (_capacity == 0)
+        {
+            return;
+        }
+        
         if (_data.ContainsKey(key))
         {
             var d = _data[key];
@@ -165,11 +170,15 @@ public class Cache
                 if (h.Next != null)
                 {
                     h.Next.Prev = null;
-                    Head = h.Next;
                 }
 
+                Head = h.Next;
                 _data.Remove(h.Key);
                 Size--;
+            }
+            else
+            {
+                throw new Exception();
             }
         }
 
@@ -177,6 +186,7 @@ public class Cache
             var f = new FrequencyNode { Key = key, Count = 1, };
             var d = new DataNode { Key = key, Value = value, Frequency = f, };
             _data[key] = d;
+            Size++;
             if (_freq.ContainsKey(f.Count))
             {
                 var pf = _freq[f.Count];
@@ -189,8 +199,6 @@ public class Cache
                 _freq[f.Count] = f;
                 Head = f;
             }
-
-            Size++;
         }
     }
 }
@@ -546,5 +554,90 @@ public class Tests
         sut.Get(3);
         sut.Get(2);
         Assert.That(sut.Head, Is.EqualTo(sut.Data[3].Frequency));
+    }
+
+    [Test]
+    public void Test_030()
+    {
+        var sut = new Cache(3);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(1);
+        sut.Get(1);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[2].Frequency));
+    }
+    
+    
+    
+
+    [Test, Explicit]
+    public void Test_100()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        sut.Get(13);
+        sut.Put(2, 19);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(5, 25);
+        sut.Get(8);
+        sut.Put(9, 22);
+        sut.Put(5, 5);
+        sut.Put(1, 30);
+        sut.Get(11);
+        sut.Put(9, 12);
+        sut.Get(7);
+        sut.Get(5);
+        sut.Get(8);
+        sut.Get(9);
+        sut.Put(4, 30);
+        sut.Put(9, 3);
+        sut.Get(9);
+        sut.Get(10);
+        sut.Get(10);
+        sut.Put(6, 14);
+        sut.Put(3, 1);
+        sut.Get(3);
+        sut.Put(10, 11);
+        sut.Get(8);
+        sut.Put(2, 14);
+        sut.Get(1);
+        sut.Get(5);
+        sut.Get(4);
+        sut.Put(11, 4);
+        sut.Put(12, 24);
+        sut.Put(5, 18);
+        sut.Get(13);
+        sut.Put(7, 23);
+        sut.Get(8);
+        sut.Get(12);
+        sut.Put(3, 27);
+        sut.Put(2, 12);
+        sut.Get(5);
+        sut.Put(2, 9);
+        sut.Put(13, 4);
+        sut.Put(8, 18);
+        sut.Put(1, 7);
+        sut.Get(6);
+        sut.Put(9, 29);
+        sut.Put(8, 21);
+        sut.Get(5);
+        sut.Put(6, 30);
+        sut.Put(1, 12);
+        sut.Get(10);
+        sut.Put(4, 15);
+        sut.Put(7, 22);
+        sut.Put(11, 26);
+        sut.Put(8, 17);
+        sut.Put(9, 29);
+        sut.Get(5);
+        sut.Put(3, 4);
+        sut.Put(11, 30);
+        Assert.That(sut.Get(12), Is.EqualTo(-1));
     }
 }
