@@ -4,6 +4,7 @@ namespace LFUCache;
 // break: 19:40
 // start: 19:50
 // break: 20:10
+// start: 18:26
 
 public class DataNode
 {
@@ -29,6 +30,7 @@ public class Cache
     public IReadOnlyDictionary<int, DataNode> Data => _data;
     public IReadOnlyDictionary<int, FrequencyNode> Freq => _freq;
     public int Size { get; private set; }
+    public FrequencyNode? Head { get; private set; }
 
     public Cache(int capacity)
     {
@@ -57,6 +59,14 @@ public class Cache
         var oldCount = f.Count;
         var newCount = f.Count + 1;
         f.Count = newCount;
+
+        if (Head != null &&
+            Head.Key == key &&
+            Head.Next != null &&
+            Head.Next.Count <= newCount)
+        {
+            Head = Head.Next;
+        }
 
         if (_freq[oldCount] == f)
         {
@@ -149,7 +159,18 @@ public class Cache
 
         if (Size == _capacity)
         {
-            return;
+            var h = Head;
+            if (h != null)
+            {
+                if (h.Next != null)
+                {
+                    h.Next.Prev = null;
+                    Head = h.Next;
+                }
+
+                _data.Remove(h.Key);
+                Size--;
+            }
         }
 
         {
@@ -166,6 +187,7 @@ public class Cache
             else
             {
                 _freq[f.Count] = f;
+                Head = f;
             }
 
             Size++;
@@ -437,5 +459,92 @@ public class Tests
         sut.Put(2, 2);
         sut.Put(3, 3);
         Assert.That(sut.Size, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void Test_022()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[1].Frequency));
+    }
+
+    [Test]
+    public void Test_023()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[1].Frequency));
+    }
+
+    [Test]
+    public void Test_024()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[2].Frequency));
+    }
+
+    [Test]
+    public void Test_025()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Put(2, 4);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[3].Frequency));
+    }
+
+    [Test]
+    public void Test_026()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(2);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[3].Frequency));
+    }
+
+    [Test]
+    public void Test_027()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(2);
+        sut.Get(3);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[2].Frequency));
+    }
+
+    [Test]
+    public void Test_028()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Get(3);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[2].Frequency));
+    }
+
+    [Test]
+    public void Test_029()
+    {
+        var sut = new Cache(2);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Get(2);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[3].Frequency));
     }
 }
