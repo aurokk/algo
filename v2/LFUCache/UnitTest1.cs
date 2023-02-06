@@ -5,6 +5,8 @@ namespace LFUCache;
 // start: 19:50
 // break: 20:10
 // start: 18:26
+// break: 19:40
+// start: 19:48
 
 public class DataNode
 {
@@ -66,6 +68,7 @@ public class Cache
             Head.Next.Count <= newCount)
         {
             Head = Head.Next;
+            Head.Prev = null;
         }
 
         if (_freq[oldCount] == f)
@@ -153,7 +156,7 @@ public class Cache
         {
             return;
         }
-        
+
         if (_data.ContainsKey(key))
         {
             var d = _data[key];
@@ -197,6 +200,11 @@ public class Cache
             else
             {
                 _freq[f.Count] = f;
+                f.Next = Head;
+                if (Head != null)
+                {
+                    Head.Prev = f;
+                }
                 Head = f;
             }
         }
@@ -567,9 +575,21 @@ public class Tests
         sut.Get(1);
         Assert.That(sut.Head, Is.EqualTo(sut.Data[2].Frequency));
     }
-    
-    
-    
+
+    [Test]
+    public void Test_031()
+    {
+        var sut = new Cache(3);
+        sut.Put(1, 1);
+        sut.Put(2, 2);
+        sut.Put(3, 3);
+        sut.Get(1);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(4, 4);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[4].Frequency));
+        Assert.That(sut.Head!.Next, Is.EqualTo(sut.Data[2].Frequency));
+    }
 
     [Test, Explicit]
     public void Test_100()
