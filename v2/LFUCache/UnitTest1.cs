@@ -104,6 +104,10 @@ public class Cache
                 f.Next = pf.Next;
                 f.Prev = pf;
                 pf.Next = f;
+                if (f.Next != null)
+                {
+                    f.Next.Prev = f;
+                }
                 _freq[newCount] = f;
             }
             else
@@ -135,6 +139,11 @@ public class Cache
                 f.Next = x.Next;
                 f.Prev = x;
                 x.Next = f;
+                if (f.Next != null)
+                {
+                    f.Next.Prev = f;
+                }
+
                 _freq[newCount] = f;
             }
             else
@@ -143,6 +152,11 @@ public class Cache
                 f.Next = x.Next;
                 f.Prev = x;
                 x.Next = f;
+                if (f.Next != null)
+                {
+                    f.Next.Prev = f;
+                }
+
                 _freq[newCount] = f;
             }
 
@@ -620,6 +634,47 @@ public class Tests
         sut.Put(10, 5);
         sut.Put(9, 10);
         Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Freq[1]));
+    }
+
+    [Test]
+    public void Test_34()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        sut.Get(13);
+        sut.Put(2, 19);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(5, 25);
+        sut.Get(8);
+        sut.Put(9, 22);
+        sut.Put(5, 5);
+        sut.Put(1, 30);
+        sut.Get(11);
+        sut.Put(9, 12);
+        sut.Get(7);
+        sut.Get(5);
+        sut.Get(8);
+        sut.Get(9);
+        sut.Put(4, 30);
+        sut.Put(9, 3);
+        sut.Get(9);
+        sut.Get(10);
+        sut.Get(10);
+        sut.Put(6, 14);
+        sut.Put(3, 1);
+        sut.Get(3);
+        sut.Put(10, 11);
+        sut.Get(8);
+        sut.Put(2, 14);
+        sut.Get(1);
+        sut.Get(5);
+        sut.Get(4);
+        Assert.That(sut.Data[2].Frequency.Prev, Is.EqualTo(sut.Data[4].Frequency));
     }
 
     [Test, Explicit("Взял этот тест с литкода")]
