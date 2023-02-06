@@ -194,7 +194,13 @@ public class Cache
             {
                 var pf = _freq[f.Count];
                 f.Prev = pf;
+                f.Next = pf.Next;
                 pf.Next = f;
+                if (f.Next != null)
+                {
+                    f.Next.Prev = f;
+                }
+
                 _freq[f.Count] = f;
             }
             else
@@ -205,6 +211,7 @@ public class Cache
                 {
                     Head.Prev = f;
                 }
+
                 Head = f;
             }
         }
@@ -591,7 +598,62 @@ public class Tests
         Assert.That(sut.Head!.Next, Is.EqualTo(sut.Data[2].Frequency));
     }
 
-    [Test, Explicit]
+    [Test]
+    public void Test_032()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        Assert.That(sut.Data[9].Frequency.Next, Is.EqualTo(sut.Data[10].Frequency));
+    }
+
+    [Test]
+    public void Test_033()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        Assert.That(sut.Freq[2].Prev, Is.EqualTo(sut.Freq[1]));
+    }
+
+    [Test, Explicit("Взял этот тест с литкода")]
+    public void Test_099()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        sut.Get(13);
+        sut.Put(2, 19);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(5, 25);
+        sut.Get(8);
+        sut.Put(9, 22);
+        sut.Put(5, 5);
+        sut.Put(1, 30);
+        sut.Get(11);
+        sut.Put(9, 12);
+        sut.Get(7);
+        sut.Get(5);
+        sut.Get(8);
+        sut.Get(9);
+        sut.Put(4, 30);
+        sut.Put(9, 3);
+        sut.Get(9);
+        sut.Get(10);
+        Assert.That(sut.Head!.Next, Is.EqualTo(sut.Data[1].Frequency));
+    }
+
+    [Test, Explicit("Взял этот тест с литкода")]
     public void Test_100()
     {
         var sut = new Cache(10);
@@ -643,7 +705,7 @@ public class Tests
         sut.Put(13, 4);
         sut.Put(8, 18);
         sut.Put(1, 7);
-        sut.Get(6);
+        Assert.That(sut.Get(6), Is.EqualTo(14));
         sut.Put(9, 29);
         sut.Put(8, 21);
         sut.Get(5);
