@@ -8,6 +8,8 @@ namespace LFUCache;
 // break: 19:40
 // start: 19:48
 // break: 21:15
+// start: 16:38
+// finish: 17:18 <- first accepted sumbission
 
 public class DataNode
 {
@@ -191,6 +193,26 @@ public class Cache
                 }
 
                 Head = h.Next;
+
+                //
+                var n = h.Next;
+                var p = h.Prev;
+                if (n != null)
+                {
+                    n.Prev = p;
+                }
+
+                if (p != null)
+                {
+                    p.Next = n;
+                }
+
+                if (_freq[h.Count] == h)
+                {
+                    _freq.Remove(h.Count);
+                }
+                //
+                
                 _data.Remove(h.Key);
                 Size--;
             }
@@ -676,6 +698,114 @@ public class Tests
         sut.Get(5);
         sut.Get(4);
         Assert.That(sut.Data[2].Frequency.Prev, Is.EqualTo(sut.Data[4].Frequency));
+    }
+
+    [Test, Explicit]
+    public void Test_35()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        sut.Get(13);
+        sut.Put(2, 19);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(5, 25);
+        sut.Get(8);
+        sut.Put(9, 22);
+        sut.Put(5, 5);
+        sut.Put(1, 30);
+        sut.Get(11);
+        sut.Put(9, 12);
+        sut.Get(7);
+        sut.Get(5);
+        sut.Get(8);
+        sut.Get(9);
+        sut.Put(4, 30);
+        sut.Put(9, 3);
+        sut.Get(9);
+        sut.Get(10);
+        sut.Get(10);
+        sut.Put(6, 14);
+        sut.Put(3, 1);
+        sut.Get(3);
+        sut.Put(10, 11);
+        sut.Get(8);
+        sut.Put(2, 14);
+        sut.Get(1);
+        sut.Get(5);
+        sut.Get(4);
+        sut.Put(11, 4);
+        sut.Put(12, 24);
+        sut.Put(5, 18);
+        sut.Get(13);
+        sut.Put(7, 23);
+        sut.Get(8);
+        sut.Get(12);
+        sut.Put(3, 27);
+        sut.Put(2, 12);
+        sut.Get(5);
+        sut.Put(2, 9);
+        sut.Put(13, 4);
+        Assert.That(sut.Head, Is.EqualTo(sut.Data[13].Frequency));
+    }
+
+    [Test, Explicit]
+    public void Test_36()
+    {
+        var sut = new Cache(10);
+        sut.Put(10, 13);
+        sut.Put(3, 17);
+        sut.Put(6, 11);
+        sut.Put(10, 5);
+        sut.Put(9, 10);
+        sut.Get(13);
+        sut.Put(2, 19);
+        sut.Get(2);
+        sut.Get(3);
+        sut.Put(5, 25);
+        sut.Get(8);
+        sut.Put(9, 22);
+        sut.Put(5, 5);
+        sut.Put(1, 30);
+        sut.Get(11);
+        sut.Put(9, 12);
+        sut.Get(7);
+        sut.Get(5);
+        sut.Get(8);
+        sut.Get(9);
+        sut.Put(4, 30);
+        sut.Put(9, 3);
+        sut.Get(9);
+        sut.Get(10);
+        sut.Get(10);
+        sut.Put(6, 14);
+        sut.Put(3, 1);
+        sut.Get(3);
+        sut.Put(10, 11);
+        sut.Get(8);
+        sut.Put(2, 14);
+        sut.Get(1);
+        sut.Get(5);
+        sut.Get(4);
+        sut.Put(11, 4);
+        sut.Put(12, 24);
+        sut.Put(5, 18);
+        sut.Get(13);
+        sut.Put(7, 23);
+        sut.Get(8);
+        sut.Get(12);
+        sut.Put(3, 27);
+        sut.Put(2, 12);
+        sut.Get(5);
+        sut.Put(2, 9);
+        sut.Put(13, 4);
+        sut.Put(8, 18);
+        sut.Put(1, 7);
+        Assert.That(sut.Get(6), Is.EqualTo(14));
     }
 
     [Test, Explicit("Взял этот тест с литкода")]
