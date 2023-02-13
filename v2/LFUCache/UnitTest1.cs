@@ -26,7 +26,7 @@ public class FrequencyNode
     public FrequencyNode? Next { get; set; }
 }
 
-public class Cache
+public class LFUCache
 {
     private readonly Dictionary<int, DataNode> _data;
     private readonly Dictionary<int, FrequencyNode> _freq;
@@ -37,7 +37,7 @@ public class Cache
     public int Size { get; private set; }
     public FrequencyNode? Head { get; private set; }
 
-    public Cache(int capacity)
+    public LFUCache(int capacity)
     {
         _data = new Dictionary<int, DataNode>();
         _freq = new Dictionary<int, FrequencyNode>();
@@ -230,14 +230,14 @@ public class Tests
     [Test]
     public void Test_000()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         Assert.That(sut.Get(1), Is.EqualTo(-1));
     }
 
     [Test]
     public void Test_001()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         Assert.That(sut.Get(1), Is.EqualTo(1));
     }
@@ -245,7 +245,7 @@ public class Tests
     [Test]
     public void Test_002()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         Assert.That(sut.Get(1), Is.EqualTo(2));
@@ -254,14 +254,14 @@ public class Tests
     [Test]
     public void Test_003()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         Assert.That(sut.Size, Is.EqualTo(0));
     }
 
     [Test]
     public void Test_004()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         Assert.That(sut.Size, Is.EqualTo(1));
     }
@@ -269,7 +269,7 @@ public class Tests
     [Test]
     public void Test_005()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         Assert.That(sut.Size, Is.EqualTo(1));
@@ -278,7 +278,7 @@ public class Tests
     [Test]
     public void Test_006()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         Assert.That(sut.Freq.ContainsKey(1), Is.True);
         Assert.That(sut.Freq[1], Has.Count.EqualTo(1));
@@ -287,7 +287,7 @@ public class Tests
     [Test]
     public void Test_007()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         Assert.That(sut.Freq.ContainsKey(1), Is.False);
@@ -296,7 +296,7 @@ public class Tests
     [Test]
     public void Test_008()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         Assert.That(sut.Freq.ContainsKey(2), Is.True);
@@ -306,7 +306,7 @@ public class Tests
     [Test]
     public void Test_009()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         sut.Get(1);
@@ -316,7 +316,7 @@ public class Tests
     [Test]
     public void Test_010()
     {
-        var sut = new Cache(1);
+        var sut = new LFUCache(1);
         sut.Put(1, 1);
         sut.Put(1, 2);
         sut.Get(1);
@@ -327,7 +327,7 @@ public class Tests
     [Test]
     public void Test_011()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         Assert.That(sut.Size, Is.EqualTo(2));
@@ -336,7 +336,7 @@ public class Tests
     [Test]
     public void Test_012()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         Assert.That(sut.Get(2), Is.EqualTo(2));
@@ -345,7 +345,7 @@ public class Tests
     [Test]
     public void Test_013()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -355,7 +355,7 @@ public class Tests
     [Test]
     public void Test_014()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         Assert.That(sut.Freq.ContainsKey(1), Is.True);
@@ -367,7 +367,7 @@ public class Tests
     [Test]
     public void Test_015()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -386,7 +386,7 @@ public class Tests
     [Test]
     public void Test_016()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -402,7 +402,7 @@ public class Tests
     [Test]
     public void Test_017()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -422,7 +422,7 @@ public class Tests
     [Test]
     public void Test_018()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -444,7 +444,7 @@ public class Tests
     [Test]
     public void Test_019()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(2, 3);
@@ -467,7 +467,7 @@ public class Tests
     [Test]
     public void Test_020()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Get(1);
@@ -484,7 +484,7 @@ public class Tests
     [Test]
     public void Test_021()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -494,7 +494,7 @@ public class Tests
     [Test]
     public void Test_022()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         Assert.That(sut.Head, Is.EqualTo(sut.Data[1].Frequency));
     }
@@ -502,7 +502,7 @@ public class Tests
     [Test]
     public void Test_023()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         Assert.That(sut.Head, Is.EqualTo(sut.Data[1].Frequency));
@@ -511,7 +511,7 @@ public class Tests
     [Test]
     public void Test_024()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -521,7 +521,7 @@ public class Tests
     [Test]
     public void Test_025()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -532,7 +532,7 @@ public class Tests
     [Test]
     public void Test_026()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -543,7 +543,7 @@ public class Tests
     [Test]
     public void Test_027()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -555,7 +555,7 @@ public class Tests
     [Test]
     public void Test_028()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -568,7 +568,7 @@ public class Tests
     [Test]
     public void Test_029()
     {
-        var sut = new Cache(2);
+        var sut = new LFUCache(2);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -581,7 +581,7 @@ public class Tests
     [Test]
     public void Test_030()
     {
-        var sut = new Cache(3);
+        var sut = new LFUCache(3);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -593,7 +593,7 @@ public class Tests
     [Test]
     public void Test_031()
     {
-        var sut = new Cache(3);
+        var sut = new LFUCache(3);
         sut.Put(1, 1);
         sut.Put(2, 2);
         sut.Put(3, 3);
@@ -608,7 +608,7 @@ public class Tests
     [Test]
     public void Test_032()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -620,7 +620,7 @@ public class Tests
     [Test]
     public void Test_033()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -632,7 +632,7 @@ public class Tests
     [Test]
     public void Test_34()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -673,7 +673,7 @@ public class Tests
     [Test]
     public void Test_35()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -726,7 +726,7 @@ public class Tests
     [Test]
     public void Test_36()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -781,7 +781,7 @@ public class Tests
     [Test]
     public void Test_099()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
@@ -812,7 +812,7 @@ public class Tests
     [Test]
     public void Test_100()
     {
-        var sut = new Cache(10);
+        var sut = new LFUCache(10);
         sut.Put(10, 13);
         sut.Put(3, 17);
         sut.Put(6, 11);
