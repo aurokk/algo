@@ -191,34 +191,29 @@ public class Cache
                 throw new Exception();
             }
 
-            var h = Head;
-            if (h.Next != null)
+            var head = Head;
+            var headNext = head.Next;
+
+            if (head.Next != null)
             {
-                h.Next.Prev = null;
+                head.Next.Prev = null;
             }
 
-            Head = h.Next;
+            Head = head.Next;
 
             //
-            var n = h.Next;
-            var p = h.Prev;
-            if (n != null)
+            if (headNext != null)
             {
-                n.Prev = p;
+                headNext.Prev = null;
             }
 
-            if (p != null)
+            if (_freq[head.Count] == head)
             {
-                p.Next = n;
-            }
-
-            if (_freq[h.Count] == h)
-            {
-                _freq.Remove(h.Count);
+                _freq.Remove(head.Count);
             }
             //
 
-            _data.Remove(h.Key);
+            _data.Remove(head.Key);
             Size--;
         }
 
@@ -700,7 +695,7 @@ public class Tests
         Assert.That(sut.Data[2].Frequency.Prev, Is.EqualTo(sut.Data[4].Frequency));
     }
 
-    [Test, Explicit]
+    [Test]
     public void Test_35()
     {
         var sut = new Cache(10);
@@ -753,7 +748,7 @@ public class Tests
         Assert.That(sut.Head, Is.EqualTo(sut.Data[13].Frequency));
     }
 
-    [Test, Explicit]
+    [Test]
     public void Test_36()
     {
         var sut = new Cache(10);
@@ -808,7 +803,7 @@ public class Tests
         Assert.That(sut.Get(6), Is.EqualTo(14));
     }
 
-    [Test, Explicit("Взял этот тест с литкода")]
+    [Test]
     public void Test_099()
     {
         var sut = new Cache(10);
@@ -839,7 +834,7 @@ public class Tests
         Assert.That(sut.Head!.Next, Is.EqualTo(sut.Data[1].Frequency));
     }
 
-    [Test, Explicit("Взял этот тест с литкода")]
+    [Test]
     public void Test_100()
     {
         var sut = new Cache(10);
