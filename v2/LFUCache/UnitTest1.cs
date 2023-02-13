@@ -10,6 +10,7 @@ namespace LFUCache;
 // break: 21:15
 // start: 16:38
 // finish: 17:18 <- first accepted sumbission
+// start: 20:14
 
 public class DataNode
 {
@@ -111,6 +112,7 @@ public class Cache
                 {
                     f.Next.Prev = f;
                 }
+
                 _freq[newCount] = f;
             }
             else
@@ -184,42 +186,40 @@ public class Cache
 
         if (Size == _capacity)
         {
-            var h = Head;
-            if (h != null)
-            {
-                if (h.Next != null)
-                {
-                    h.Next.Prev = null;
-                }
-
-                Head = h.Next;
-
-                //
-                var n = h.Next;
-                var p = h.Prev;
-                if (n != null)
-                {
-                    n.Prev = p;
-                }
-
-                if (p != null)
-                {
-                    p.Next = n;
-                }
-
-                if (_freq[h.Count] == h)
-                {
-                    _freq.Remove(h.Count);
-                }
-                //
-                
-                _data.Remove(h.Key);
-                Size--;
-            }
-            else
+            if (Head == null)
             {
                 throw new Exception();
             }
+
+            var h = Head;
+            if (h.Next != null)
+            {
+                h.Next.Prev = null;
+            }
+
+            Head = h.Next;
+
+            //
+            var n = h.Next;
+            var p = h.Prev;
+            if (n != null)
+            {
+                n.Prev = p;
+            }
+
+            if (p != null)
+            {
+                p.Next = n;
+            }
+
+            if (_freq[h.Count] == h)
+            {
+                _freq.Remove(h.Count);
+            }
+            //
+
+            _data.Remove(h.Key);
+            Size--;
         }
 
         {
