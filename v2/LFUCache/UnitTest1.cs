@@ -93,7 +93,6 @@ public class Cache
             // put
             if (_freq.ContainsKey(newCount))
             {
-                var pf = _freq[newCount];
 
                 if (p != null)
                 {
@@ -105,6 +104,7 @@ public class Cache
                     n.Prev = p;
                 }
 
+                var pf = _freq[newCount];
                 f.Next = pf.Next;
                 f.Prev = pf;
                 pf.Next = f;
@@ -147,16 +147,10 @@ public class Cache
             }
             else
             {
-                var x = _freq[oldCount];
-                f.Next = x.Next;
-                f.Prev = x;
-                x.Next = f;
-                if (f.Next != null)
-                {
-                    f.Next.Prev = f;
-                }
-
-                _freq[newCount] = f;
+                var prev = _freq[oldCount];
+                var curr = f;
+                var next = _freq[oldCount].Next;
+                Insert(prev, curr, next);
             }
 
             return;
