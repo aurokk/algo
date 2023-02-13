@@ -12,6 +12,7 @@ namespace LFUCache;
 // finish: 17:18 <- first accepted sumbission
 // start: 20:14
 // finish: 21:30
+// start: 21:46
 
 public class DataNode
 {
@@ -77,32 +78,32 @@ public class LFUCache
 
         if (_freq[oldCount] == currFreq)
         {
-            // extract
-            var p = currFreq.Prev;
-            var n = currFreq.Next;
-
-            if (p != null && p.Count == oldCount)
             {
-                _freq[oldCount] = p;
-            }
-            else
-            {
-                _freq.Remove(oldCount);
+                // extract
+                var prev = currFreq.Prev;
+                var next = currFreq.Next;
+
+                if (prev != null && prev.Count == oldCount)
+                {
+                    _freq[oldCount] = prev;
+                }
+                else
+                {
+                    _freq.Remove(oldCount);
+                }
+
+                if (_freq.ContainsKey(newCount))
+                {
+                    if (prev != null)
+                        prev.Next = next;
+
+                    if (next != null)
+                        next.Prev = prev;
+                }
             }
 
-            // put
             if (_freq.ContainsKey(newCount))
             {
-                if (p != null)
-                {
-                    p.Next = n;
-                }
-
-                if (n != null)
-                {
-                    n.Prev = p;
-                }
-
                 var prev = _freq[newCount];
                 var next = _freq[newCount].Next;
                 Insert(prev, currFreq, next);
@@ -114,33 +115,32 @@ public class LFUCache
 
             return;
         }
-        else
+
         {
-            // extract
-            var n = currFreq.Next;
-            var p = currFreq.Prev;
-            if (n != null)
             {
-                n.Prev = p;
+                // extract
+                var next = currFreq.Next;
+                var prev = currFreq.Prev;
+                if (next != null)
+                    next.Prev = prev;
+                if (prev != null)
+                    prev.Next = next;
             }
 
-            if (p != null)
             {
-                p.Next = n;
-            }
-
-            // insert
-            if (_freq.ContainsKey(newCount))
-            {
-                var prev = _freq[newCount];
-                var next = _freq[newCount].Next;
-                Insert(prev, currFreq, next);
-            }
-            else
-            {
-                var prev = _freq[oldCount];
-                var next = _freq[oldCount].Next;
-                Insert(prev, currFreq, next);
+                // insert
+                if (_freq.ContainsKey(newCount))
+                {
+                    var prev = _freq[newCount];
+                    var next = _freq[newCount].Next;
+                    Insert(prev, currFreq, next);
+                }
+                else
+                {
+                    var prev = _freq[oldCount];
+                    var next = _freq[oldCount].Next;
+                    Insert(prev, currFreq, next);
+                }
             }
 
             return;
@@ -149,42 +149,56 @@ public class LFUCache
 
     public void Put(int key, int value)
     {
-        if (_capacity == 0)
         {
-            return;
-        }
-
-        if (_data.ContainsKey(key))
-        {
-            var d = _data[key];
-            d.Value = value;
-            UpdateCounts(key);
-            return;
-        }
-
-        if (Size == _capacity)
-        {
-            RemoveLeastFrequent();
-        }
-
-        var currFreq = new FrequencyNode { Key = key, Count = 1, };
-        var currData = new DataNode { Value = value, Frequency = currFreq, };
-        _data[key] = currData;
-        Size++;
-
-        if (_freq.ContainsKey(currFreq.Count))
-        {
-            var prev = _freq[currFreq.Count];
-            var next = _freq[currFreq.Count].Next;
-            Insert(prev, currFreq, next);
-            return;
+            // edge case
+            if (_capacity == 0)
+            {
+                return;
+            }
         }
 
         {
-            var next = Head;
-            Insert(null, currFreq, next);
-            Head = currFreq;
-            return;
+            // key exists
+            if (_data.ContainsKey(key))
+            {
+                var d = _data[key];
+                d.Value = value;
+                UpdateCounts(key);
+                return;
+            }
+        }
+
+        {
+            {
+                // full
+                if (Size == _capacity)
+                {
+                    RemoveLeastFrequent();
+                }
+            }
+
+            var currFreq = new FrequencyNode { Key = key, Count = 1, };
+            var currData = new DataNode { Value = value, Frequency = currFreq, };
+            _data[key] = currData;
+            Size++;
+
+            {
+                // contains count
+                if (_freq.ContainsKey(currFreq.Count))
+                {
+                    var prev = _freq[currFreq.Count];
+                    var next = _freq[currFreq.Count].Next;
+                    Insert(prev, currFreq, next);
+                    return;
+                }
+            }
+
+            {
+                var next = Head;
+                Insert(null, currFreq, next);
+                Head = currFreq;
+                return;
+            }
         }
     }
 
