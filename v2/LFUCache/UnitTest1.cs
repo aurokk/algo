@@ -140,16 +140,10 @@ public class Cache
             // insert
             if (_freq.ContainsKey(newCount))
             {
-                var x = _freq[newCount];
-                f.Next = x.Next;
-                f.Prev = x;
-                x.Next = f;
-                if (f.Next != null)
-                {
-                    f.Next.Prev = f;
-                }
-
-                _freq[newCount] = f;
+                var prev = _freq[newCount];
+                var curr = f;
+                var next = _freq[newCount].Next;
+                Insert(prev, curr, next);
             }
             else
             {
@@ -168,7 +162,20 @@ public class Cache
             return;
         }
     }
-    
+
+    private void Insert(FrequencyNode? prev, FrequencyNode curr, FrequencyNode? next)
+    {
+        curr.Prev = prev;
+        if (prev != null)
+            prev.Next = curr;
+
+        curr.Next = next;
+        if (next != null)
+            next.Prev = curr;
+
+        _freq[curr.Count] = curr;
+    }
+
     private void MoveHeadToNext()
     {
         if (Head == null)
@@ -178,7 +185,7 @@ public class Cache
         if (Head != null)
             Head.Prev = null;
     }
-    
+
     private void RemoveLeastFrequent()
     {
         if (Head == null)
@@ -218,6 +225,7 @@ public class Cache
             var d = new DataNode { Key = key, Value = value, Frequency = f, };
             _data[key] = d;
             Size++;
+
             if (_freq.ContainsKey(f.Count))
             {
                 var pf = _freq[f.Count];
