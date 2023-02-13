@@ -168,6 +168,22 @@ public class Cache
             return;
         }
     }
+    
+    private void RemoveLeastFrequent()
+    {
+        if (Head == null)
+            throw new Exception();
+
+        _data.Remove(Head.Key);
+        if (_freq[Head.Count] == Head)
+            _freq.Remove(Head.Count);
+
+        Head = Head.Next;
+        if (Head != null)
+            Head.Prev = null;
+
+        Size--;
+    }
 
     public void Put(int key, int value)
     {
@@ -186,35 +202,7 @@ public class Cache
 
         if (Size == _capacity)
         {
-            if (Head == null)
-            {
-                throw new Exception();
-            }
-
-            var head = Head;
-            var headNext = head.Next;
-
-            if (head.Next != null)
-            {
-                head.Next.Prev = null;
-            }
-
-            Head = head.Next;
-
-            //
-            if (headNext != null)
-            {
-                headNext.Prev = null;
-            }
-
-            if (_freq[head.Count] == head)
-            {
-                _freq.Remove(head.Count);
-            }
-            //
-
-            _data.Remove(head.Key);
-            Size--;
+            RemoveLeastFrequent();
         }
 
         {
