@@ -169,6 +169,16 @@ public class Cache
         }
     }
     
+    private void MoveHeadToNext()
+    {
+        if (Head == null)
+            throw new Exception();
+
+        Head = Head.Next;
+        if (Head != null)
+            Head.Prev = null;
+    }
+    
     private void RemoveLeastFrequent()
     {
         if (Head == null)
@@ -178,9 +188,7 @@ public class Cache
         if (_freq[Head.Count] == Head)
             _freq.Remove(Head.Count);
 
-        Head = Head.Next;
-        if (Head != null)
-            Head.Prev = null;
+        MoveHeadToNext();
 
         Size--;
     }
