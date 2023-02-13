@@ -13,6 +13,7 @@ namespace LFUCache;
 // start: 20:14
 // finish: 21:30
 // start: 21:46
+// finish: 22:14
 
 public class DataNode
 {
@@ -79,34 +80,32 @@ public class LFUCache
         if (_freq[oldCount] == currFreq)
         {
             {
-                // extract
+                // adjust _freq
                 var prev = currFreq.Prev;
-                var next = currFreq.Next;
-
                 if (prev != null && prev.Count == oldCount)
-                {
                     _freq[oldCount] = prev;
-                }
                 else
-                {
                     _freq.Remove(oldCount);
-                }
-
-                if (_freq.ContainsKey(newCount))
-                {
-                    if (prev != null)
-                        prev.Next = next;
-
-                    if (next != null)
-                        next.Prev = prev;
-                }
             }
 
             if (_freq.ContainsKey(newCount))
             {
-                var prev = _freq[newCount];
-                var next = _freq[newCount].Next;
-                Insert(prev, currFreq, next);
+                {
+                    // extract
+                    var prev = currFreq.Prev;
+                    var next = currFreq.Next;
+                    if (prev != null)
+                        prev.Next = next;
+                    if (next != null)
+                        next.Prev = prev;
+                }
+                
+                {
+                    // insert
+                    var prev = _freq[newCount];
+                    var next = _freq[newCount].Next;
+                    Insert(prev, currFreq, next);
+                }
             }
             else
             {
