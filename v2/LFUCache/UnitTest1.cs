@@ -222,16 +222,10 @@ public class Cache
 
             if (_freq.ContainsKey(f.Count))
             {
-                var pf = _freq[f.Count];
-                f.Prev = pf;
-                f.Next = pf.Next;
-                pf.Next = f;
-                if (f.Next != null)
-                {
-                    f.Next.Prev = f;
-                }
-
-                _freq[f.Count] = f;
+                var prev = _freq[f.Count];
+                var curr = f;
+                var next = _freq[f.Count].Next;
+                Insert(prev, curr, next);
             }
             else
             {
